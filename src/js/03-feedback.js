@@ -41,4 +41,3 @@ refs.formElem.addEventListener('submit', e => {
 
     console.log(formData);
 });
-
