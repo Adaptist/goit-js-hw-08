@@ -16,9 +16,13 @@ const THROTTLE_INTERVAL = 500;
 refs.formElem.addEventListener('input', throttle(e => {
     const value = e.target.value;
     const key = e.target.name;
-
-    obj [key] = value;
-    
+  
+    if (value === '') {
+      delete obj[key];
+    } else {
+      obj[key] = value;
+    }
+  
     localStorage.setItem("feedback-form-state", JSON.stringify(obj));
 }, THROTTLE_INTERVAL));
 
