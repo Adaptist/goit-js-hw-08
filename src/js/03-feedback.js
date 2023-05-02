@@ -11,6 +11,7 @@ refs.formElem.addEventListener('submit', e => {
 });
 
 const obj = {}
+const THROTTLE_INTERVAL = 500;
 
 refs.formElem.addEventListener('input', throttle(e => {
     const value = e.target.value;
@@ -20,7 +21,7 @@ refs.formElem.addEventListener('input', throttle(e => {
     console.log(obj);
     
     localStorage.setItem("feedback-form-state", JSON.stringify(obj));
-}, 500));
+}, THROTTLE_INTERVAL));
 
 const formData = JSON.parse(localStorage.getItem("feedback-form-state")) || {};
 
