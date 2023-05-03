@@ -10,19 +10,15 @@ refs.formElem.addEventListener('submit', e => {
     e.preventDefault();
 });
 
-const obj = {}
+let obj = {}
 const THROTTLE_INTERVAL = 500;
 
 refs.formElem.addEventListener('input', throttle(e => {
     const value = e.target.value;
     const key = e.target.name;
-  
-    if (value === '') {
-      delete obj[key];
-    } else {
-      obj[key] = value;
-    }
-  
+
+    obj[key] = value;
+    
     localStorage.setItem("feedback-form-state", JSON.stringify(obj));
 }, THROTTLE_INTERVAL));
 
@@ -44,4 +40,5 @@ refs.formElem.addEventListener('submit', e => {
     refs.messageInput.value = '';
 
     console.log(formData);
+    obj = {};
 });
